@@ -58,17 +58,29 @@ public class Upgrade
 
 public class UpgradeSystem
 {
-    private List<Pair<string, int>> m_upgradeList = new List<Pair<string, int>>();
+    private List<Upgrade> m_upgradeList = new List<Upgrade>();
 
     public UpgradeSystem() { }
 
     public void AddUpgrade(Upgrade t_upgrade)
     {
-        m_upgradeList.Add(t_upgrade.GetUpgradePair());
+        m_upgradeList.Add(t_upgrade);
     }
 
-    public int getUpgradeCount()
+    public int GetUpgradeCount()
     {
         return m_upgradeList.Count;
+    }
+
+    public Upgrade GetUpgrade(string t_name)
+    {
+        foreach(Upgrade upgrade in m_upgradeList)
+        {
+            if (upgrade.GetUpgradeName() == t_name)
+            {
+                return upgrade;
+            }
+        }
+        return null;
     }
 }

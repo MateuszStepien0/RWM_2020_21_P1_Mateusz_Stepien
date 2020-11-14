@@ -8,17 +8,6 @@ namespace Tests
 {
     public class TestSuite
     {
-        [SetUp]
-        public void Setup()
-        {
-
-        }
-
-        [TearDown]
-        public void Teardown()
-        {
-
-        }
 
         [UnityTest]
         public IEnumerator UpgradeObjectCreationTest()
@@ -35,12 +24,23 @@ namespace Tests
         public IEnumerator UpgradeSystemObjectCreationTest()
         {
             UpgradeSystem upgradeSystem = new UpgradeSystem();
-            int listCount = upgradeSystem.getUpgradeCount();
+            int listCount = upgradeSystem.GetUpgradeCount();
             Assert.AreEqual(listCount, 0);
             Upgrade testUpgrade = new Upgrade(new Pair<string, int>("Attack", 1));
             upgradeSystem.AddUpgrade(testUpgrade);
-            listCount = upgradeSystem.getUpgradeCount();
+            listCount = upgradeSystem.GetUpgradeCount();
             Assert.AreEqual(listCount, 1);
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator UpgradeObjectRetrievalTest()
+        {
+            UpgradeSystem upgradeSystem = new UpgradeSystem();
+            Upgrade testUpgrade = new Upgrade(new Pair<string, int>("Attack", 1));
+            upgradeSystem.AddUpgrade(testUpgrade);
+            Upgrade testUpgrade2 = upgradeSystem.GetUpgrade("Attack");
+            Assert.AreEqual("Attack", testUpgrade2.GetUpgradeName());
             yield return null;
         }
     }
