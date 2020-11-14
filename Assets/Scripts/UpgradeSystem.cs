@@ -40,6 +40,11 @@ public class Upgrade
         m_upgradePair.m_second -= 1;
     }
 
+    public void SetLevel(int t_level)
+    {
+        m_upgradePair.m_second = t_level;
+    }
+
     public string GetUpgradeName()
     {
         return m_upgradePair.m_first;
