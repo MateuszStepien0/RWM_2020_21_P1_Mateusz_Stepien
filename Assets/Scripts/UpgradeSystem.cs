@@ -23,10 +23,7 @@ public class Upgrade
 {
     private Pair<string, int> m_upgradePair = new Pair<string, int>("", 0);
     
-    public Upgrade()
-    {
-
-    }
+    public Upgrade() { }
 
     public Upgrade(Pair<string, int> t_pair)
     {
@@ -51,5 +48,27 @@ public class Upgrade
     public int GetUpgradeLevel()
     {
         return m_upgradePair.m_second;
+    }
+
+    public Pair<string, int> GetUpgradePair()
+    {
+        return m_upgradePair;
+    }
+}
+
+public class UpgradeSystem
+{
+    private List<Pair<string, int>> m_upgradeList = new List<Pair<string, int>>();
+
+    public UpgradeSystem() { }
+
+    public void AddUpgrade(Upgrade t_upgrade)
+    {
+        m_upgradeList.Add(t_upgrade.GetUpgradePair());
+    }
+
+    public int getUpgradeCount()
+    {
+        return m_upgradeList.Count;
     }
 }

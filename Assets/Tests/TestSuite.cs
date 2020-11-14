@@ -30,5 +30,18 @@ namespace Tests
             Assert.Greater(testUpgrade.GetUpgradeLevel(), tempUpgradeLevel);
             yield return null;
         }
+
+        [UnityTest]
+        public IEnumerator UpgradeSystemObjectCreationTest()
+        {
+            UpgradeSystem upgradeSystem = new UpgradeSystem();
+            int listCount = upgradeSystem.getUpgradeCount();
+            Assert.AreEqual(listCount, 0);
+            Upgrade testUpgrade = new Upgrade(new Pair<string, int>("Attack", 1));
+            upgradeSystem.AddUpgrade(testUpgrade);
+            listCount = upgradeSystem.getUpgradeCount();
+            Assert.AreEqual(listCount, 1);
+            yield return null;
+        }
     }
 }
